@@ -157,11 +157,6 @@ def check_file_access(filename, mode='r'):
                 raise FileNotFoundError(f"``{path.parent}`` does not exist")
             if not path.parent.is_dir():
                 raise NotADirectoryError(f"``{path.parent}`` is not a directory")
-            if not os.access(path.parent, os.W_OK):
-                raise PermissionError(
-                    f"directory ``{path.parent}`` exists but it can not be "
-                    f"written"
-                )
     elif mode == 'a':
         if os.access(path, os.F_OK):
             check_file_access(path, 'r+')
